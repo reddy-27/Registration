@@ -5,8 +5,8 @@ import android.service.autofill.Validators.not
 import android.view.View
 import android.widget.Toast
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -57,16 +57,15 @@ class ExampleInstrumentedTest {
         onView(withId(R.id.first_name)).perform(typeText("raj"))
         onView(withId(R.id.last_name)).perform(typeText("king"))
         onView(withId(R.id.button)).perform(click())
-       // onView(withId(R.id.button)).perform(click()).check(matches(not(isEnabled())))
-//        onView(withId(R.id.button)).perform(isEnabled())
+//        onView(withId(R.id.button)).perform(click()).check(matches(not(isEnabled())))
 
 
-                    onView(withId(R.id.message)).check(matches("raj(.*)", "raj king"));
+//        onView(withId(R.id.button)).perform(isEnabled() as ViewAction)
 
 
-//            onView(withId(R.id.message))
-//                .perform(click())
-//           .check(matches(withText("welcome raju king")))
+        onView(withId(R.id.message)).check(matches("raj(.*)", "raj king"));
+
+
     }
 
 
@@ -78,9 +77,30 @@ class ExampleInstrumentedTest {
         onView(withId(R.id.message)).check(matches("s", "abhijeet said"));
 
 
+    }
+
+    @Test
+    fun txt_Cleared() {
+
+        onView(withId(R.id.first_name)).perform(clearText())
+        onView(withId(R.id.last_name)).perform(clearText())
+
 
     }
 
+//    @Test
+//    fun btn_Enabled() {
+//
+////        onView(withId(R.id.first_name)).perform(isEnabled() as ViewAction)
+//
+//        onView(withId(R.id.button)).check(matches(isEnabled()));
+//        onView(withText("submit")).perform(click());
+//
+//        onView(withId(R.id.button)).check(matches(not(isEnabled())));
+//
+//    }
+//
+//
 
     /*private fun Any.check(matches: Boolean) {
         if(matches)

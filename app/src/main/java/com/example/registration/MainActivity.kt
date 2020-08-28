@@ -17,5 +17,9 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener(View.OnClickListener {
             message.text="welcome ${first_name.text}${last_name.text}"
         })
+
+
+
+
     }
 }
